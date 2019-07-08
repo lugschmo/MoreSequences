@@ -23,7 +23,7 @@ def main():
     #   until you get to TO DO 9 and 10.
     # ------------------------------------------------------------------
     run_test_draw_shapes()
-    # run_test_rectangles_from_circles()
+    run_test_rectangles_from_circles()
 
 
 def run_test_make_simple_list():
@@ -284,7 +284,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
+    # DONE: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
     #     The testing code is already written for you (that you just enabled in TO DO 8).
     #
     ####################################################################
@@ -294,6 +294,10 @@ def draw_shapes(shapes, window):
     # FWIW: The word for ideas like this is "polymorphism".
     ####################################################################
     # ------------------------------------------------------------------
+    for k in range(len(shapes)):
+        current = shapes[k]
+        current.attach_to(window)
+        window.render(0.3)
 
 
 def run_test_rectangles_from_circles():
@@ -395,7 +399,7 @@ def rectangles_from_circles(circles):
       :rtype: list of rg.Rectangles
     """
     # ------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -406,6 +410,15 @@ def rectangles_from_circles(circles):
     #            in this function, so DON'T draw anything in here!
     ####################################################################
     # ------------------------------------------------------------------
+    sequence = []
+    for k in range(len(circles)):
+        center = circles[k].center
+        radius = circles[k].radius
+        upper_left = rg.Point(center.x - radius, center.y - radius)
+        lower_right = rg.Point(center.x + radius, center.y + radius)
+        sequence = sequence + [rg.Rectangle(upper_left, lower_right)]
+    return sequence
+
 
 
 # ----------------------------------------------------------------------
